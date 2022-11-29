@@ -1,0 +1,15 @@
+NAME                              READY   STATUS    RESTARTS   AGE   IP          NODE               NOMINATED NODE   READINESS GATES
+pod/javawebapp-696d7bf979-dsgmt   1/1     Running   0          90s   10.36.0.2   ip-172-31-10-250   <none>           <none>
+pod/javawebapp-696d7bf979-tvr49   1/1     Running   0          90s   10.44.0.3   ip-172-31-15-153   <none>           <none>
+
+NAME                 TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+service/javawebsvc   NodePort   10.108.44.56   <none>        8089:30456/TCP   90s   app=javawebapp
+
+NAME                         READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS         IMAGES                   SELECTOR
+deployment.apps/javawebapp   2/2     2            2           90s   javawebcontainer   uday745/javawebapp:5.0   app=javawebapp
+
+NAME                                    DESIRED   CURRENT   READY   AGE   CONTAINERS         IMAGES                   SELECTOR
+replicaset.apps/javawebapp-696d7bf979   2         2         2       90s   javawebcontainer   uday745/javawebapp:5.0   app=javawebapp,pod-template-hash=696d7bf979
+
+NAME                                                REFERENCE               TARGETS   MINPODS   MAXPODS   REPLICAS   AGE
+horizontalpodautoscaler.autoscaling/javapodscaler   Deployment/javawebapp   1%/50%    2         5         2          90s
